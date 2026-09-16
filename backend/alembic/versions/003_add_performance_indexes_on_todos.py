@@ -1,6 +1,6 @@
 """add_performance_indexes_on_todos
 
-Revision ID: c8192a34ef01
+Revision ID: 003_indexes
 Revises: a0790c76a129
 Create Date: 2026-09-16 17:09:00.000000
 
@@ -11,7 +11,7 @@ from alembic import op
 import sqlalchemy as sa
 
 # revision identifiers, used by Alembic.
-revision: str = 'c8192a34ef01'
+revision: str = '003_indexes'
 down_revision: Union[str, None] = 'a0790c76a129'
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None

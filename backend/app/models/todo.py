@@ -8,6 +8,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.db.base import Base
 
 if TYPE_CHECKING:
+    from app.models.tag import Tag
     from app.models.user import User
 
 
@@ -25,7 +26,7 @@ class Todo(Base):
         default=uuid.uuid4,
     )
     title: Mapped[str] = mapped_column(
-        String(200),
+        String(255),
         nullable=False,
     )
     description: Mapped[str | None] = mapped_column(
@@ -55,6 +56,12 @@ class Todo(Base):
         "User",
         back_populates="todos",
         lazy="select",
+    )
+    tags: Mapped[list["Tag"]] = relationship(
+        "Tag",
+        secondary="todo_tags",
+        back_populates="todos",
+        lazy="selectin",
     )
 
     def __repr__(self) -> str:
